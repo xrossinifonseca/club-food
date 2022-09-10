@@ -23,8 +23,11 @@ const NavBar = () => {
   return (
     <div className="navbar-container">
       <Link href="/">
-        <GiOrange size={30} className="nav-icon" />
+        <div>
+          <GiOrange size={30} className="nav-icon" />
+        </div>
       </Link>
+
       <ul className="list">
         <Link href="/">
           <li>Home</li>

@@ -60,7 +60,7 @@ const HeroBanner = ({ heroBanner, search }) => {
               produtos para <span>"{searchItem}"</span>
             </p>
             {searchProduct(info).map((item) => (
-              <div key={item}>
+              <div key={item._id}>
                 <div className="search-product">
                   <img src={urlFor(item.image[0])} className="search-image" />
                   <h3>{item.name}</h3>
