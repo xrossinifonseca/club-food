@@ -57,7 +57,7 @@ const HeroBanner = ({ heroBanner, search }) => {
         {searchItem.length >= 1 && (
           <div className="search-container">
             <p>
-              produtos para <span>"{searchItem}"</span>
+              produtos para <span>{searchItem}</span>
             </p>
             {searchProduct(info).map((item) => (
               <div key={item._id}>
