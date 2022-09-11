@@ -2,7 +2,7 @@ import React from "react";
 import { client } from "../lib/client";
 import { HeroBanner } from "../components";
 
-import Ofertas from "../components/products/ofertas";
+// import Ofertas from "../components/products/ofertas";
 import CardShop from "../components/CardShop";
 
 const index = ({ bannerData, ofertas, fruits, legumes, verduras, bebidas }) => {
