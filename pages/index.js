@@ -15,12 +15,7 @@ const index = ({ bannerData, ofertas, fruits, legumes, verduras, bebidas }) => {
     <div>
       <HeroBanner heroBanner={bannerDb[1]} search={searchItem} />
 
-      <CardShop
-        cardShopFruit={bannerDb[2]}
-        cardShopLegume={bannerDb[3]}
-        cardShopVerdura={bannerDb[4]}
-        cardShopBebida={bannerDb[0]}
-      />
+      <CardShop cardShopFruit={bannerDb[2]} />
 
       {/* produtos em ofertas */}
       <div className="ofertas">
