@@ -12,10 +12,11 @@ const Ofertas = ({ ofertas }) => {
       <p>{name}</p>
       <p className="oferta-detail">{details}</p>
       <h5>R$ {price}/unidade</h5>
+
       <button
         type="button"
-        className="btn-cart"
         onClick={() => addToCart(ofertas, qty)}
+        className="btn-oferta"
       >
         Adicionar
       </button>

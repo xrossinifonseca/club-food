@@ -29,7 +29,7 @@ const Cart = () => {
         {cartItems.length < 1 && (
           <div className="empty-cart">
             {/* <AiOutlineShopping size={150} /> */}
-            <h3>Sua sacola esta vazia</h3>
+            <h3>Seu carrinho esta vazio</h3>
           </div>
         )}
         <div className="product-container">

@@ -391,9 +391,29 @@ a {
   border-radius: 10px;
   margin: 10px;
 }
+.btn-oferta {
+  width: 40%;
+  height: 40px;
+  background-color: white;
+  border: 1px solid #27713e;
+  color: #27713e;
+  border-radius: 10px;
+  font-weight: 500;
+  transform: scale(1, 1);
+  transition: transform 0.5s ease;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.btn-oferta:hover {
+  transform: scale(1.1);
+  background-color: #27713e;
+  color: white;
+}
+
 .product-oferta h5 {
   color: #f02d34;
 }
+
 .ofertas-icon {
   color: #27713e;
   font-size: 20px;
@@ -964,6 +984,9 @@ input[type="number"]::-webkit-inner-spin-button {
   .ofertas h1 {
     font-size: 30px;
   }
+  .oferta-detail {
+    font-size: 10px;
+  }
   .card-oferta {
     width: 100%;
   }
@@ -976,6 +999,11 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 180px;
     font-size: 13px;
     padding-bottom: 10px;
+    cursor: none;
+  }
+  .btn-oferta {
+    width: 50%;
+    height: 30px;
     cursor: none;
   }
   .product-oferta h5 {

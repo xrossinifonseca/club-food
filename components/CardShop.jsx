@@ -17,7 +17,7 @@ const CardShop = ({ cardShopFruit }) => {
           consequuntur quam?
         </p>
 
-        <button>
+        <button type="button">
           <Link href="/produtos/frutas">Peça agora </Link>
         </button>
       </div>
