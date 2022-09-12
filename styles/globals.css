@@ -278,7 +278,6 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
   gap: 15px;
   margin-top: 30px;
   width: 100%;
@@ -789,7 +788,7 @@ input[type="number"]::-webkit-inner-spin-button {
   }
   .hero-image {
     left: 26%;
-    top: 55%;
+    top: 48%;
   }
   .btn {
     display: none;
@@ -805,7 +804,7 @@ input[type="number"]::-webkit-inner-spin-button {
   }
   .card-shop {
     height: 250px;
-    width: 55%;
+    width: 80%;
   }
   .cardshop-container h1 {
     font-size: 30px;
@@ -815,8 +814,11 @@ input[type="number"]::-webkit-inner-spin-button {
   }
   .card-shop:hover {
     height: 250px;
-    width: 40%;
+    width: 90%;
   }
+  /* .card-shop:hover {
+    width: 65%;
+  } */
   .list {
     display: none;
   }
@@ -865,9 +867,7 @@ input[type="number"]::-webkit-inner-spin-button {
   .product-card h1 {
     font-size: 3em;
   }
-  .card-shop:hover {
-    width: 65%;
-  }
+
   .search input {
     width: 60%;
     margin-left: 35px;
@@ -881,5 +881,22 @@ input[type="number"]::-webkit-inner-spin-button {
   }
   .footer-container h4 {
     font-size: 13px;
+  }
+  .product-card {
+    width: 75%;
+    margin-left: 40px;
+    margin-top: 10px;
+  }
+  .card {
+    width: 135px;
+    height: 180px;
+    margin: 0;
+    text-align: center;
+  }
+  .btn-cart {
+    width: 50%;
+  }
+  .shop-card-container {
+    padding: 0;
   }
 }
