@@ -1,9 +1,11 @@
 import React from "react";
-import { client } from "../lib/client";
+import { client, urlFor } from "../lib/client";
 import { HeroBanner } from "../components";
-
-// import Ofertas from "../components/products/ofertas";
+import Ofertas from "../components/products/ofertas";
 import CardShop from "../components/CardShop";
+import { GiBananaPeeled, GiTomato, GiBroccoli } from "react-icons/gi";
+import { BiDrink } from "react-icons/bi";
+import FooterBanner from "../components/FooterBanner";
 
 const index = ({ bannerData, ofertas, fruits, legumes, verduras, bebidas }) => {
   const bannerDb = bannerData.length && bannerData;
@@ -20,13 +22,32 @@ const index = ({ bannerData, ofertas, fruits, legumes, verduras, bebidas }) => {
         cardShopBebida={bannerDb[0]}
       />
 
-      {/* <h1>PRODUTOS EM OFERTAS</h1>
-      <p>A maior variedade de frutas, legumes e verduras.</p>
-      <div className="product-ofertas">
-        {ofertas?.map((oferta) => (
-          <Ofertas key={oferta._id} ofertas={oferta} />
-        ))}
-      </div> */}
+      {/* produtos em ofertas */}
+      <div className="ofertas">
+        <h1>Produtos em ofertas</h1>
+        <div className="ofertas-icon">
+          <p>
+            frutas <GiBananaPeeled />
+          </p>
+          <p>
+            verduras <GiBroccoli />
+          </p>
+          <p>
+            legume <GiTomato />
+          </p>
+          <p>
+            bebidas <BiDrink />
+          </p>
+        </div>
+
+        <div className="card-oferta">
+          {ofertas?.map((oferta) => (
+            <Ofertas key={oferta._id} ofertas={oferta} />
+          ))}
+        </div>
+      </div>
+
+      <FooterBanner FooterBanner={bannerDb[4]} />
     </div>
   );
 };

@@ -95,12 +95,13 @@ const HeroBanner = ({ heroBanner, search }) => {
             Informe seu CEP <GoLocation size={20} />
           </p>
         </div>
+        <img
+          src={urlFor(heroBanner.image)}
+          className="hero-image"
+          alt="cart-logo"
+        />
       </div>
-      <img
-        src={urlFor(heroBanner.image)}
-        className="hero-image"
-        alt="cart-logo"
-      />
+
       {showCep && <CepForm active={() => setShowCep(false)} />}
     </div>
   );
