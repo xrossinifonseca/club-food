@@ -8,7 +8,7 @@ const FooterBanner = ({ FooterBanner: { image } }) => {
         <img src={urlFor(image)} className="footer-image" />
 
         <div>
-          <h5>A maior variedade de frutas, legumes e verduras,</h5>
+          <h5>A maior variedade de frutas, legumes e verduras.</h5>
           <p>
             Peça sem sair de casa, deixa que a gente te entrega tudo o que
             precisar.
