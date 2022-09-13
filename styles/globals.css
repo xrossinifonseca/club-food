@@ -86,8 +86,8 @@ a {
   position: absolute;
   top: 60px;
   right: 1%;
-  color: #fff;
   font-weight: 500;
+  color: #fff;
   z-index: 2;
 }
 .hero-icon p {
@@ -357,7 +357,6 @@ a {
   align-items: center;
   flex-direction: column;
   margin-top: 40px;
-  /* background-color: #efb733; */
 }
 .ofertas h1 {
   color: #efb733;
@@ -369,6 +368,7 @@ a {
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .oferta-image {
   width: 50%;
@@ -390,6 +390,9 @@ a {
   justify-content: center;
   border-radius: 10px;
   margin: 10px;
+}
+.product-oferta:hover {
+  transform: scale(1.1);
 }
 .btn-oferta {
   width: 40%;
@@ -491,7 +494,7 @@ a {
   width: 100%;
 }
 .card-right p {
-  color: #311906;
+  color: #847770;
   text-align: justify;
   line-height: 20px;
 }

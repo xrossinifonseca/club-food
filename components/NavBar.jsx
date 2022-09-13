@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GiOrange } from "react-icons/gi";
 import { BsCart4 } from "react-icons/bs";
 import { BiFoodMenu } from "react-icons/bi";

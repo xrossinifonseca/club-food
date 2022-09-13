@@ -3,7 +3,7 @@ import { useStateContext } from "../../context/StateContext";
 import { urlFor } from "../../lib/client";
 
 const Bebidas = ({ bebidas }) => {
-  const { image, name, slug, details, price } = bebidas;
+  const { image, name, slug, details, price, setSideMenu } = bebidas;
   const { addToCart, qty } = useStateContext();
   return (
     <div>

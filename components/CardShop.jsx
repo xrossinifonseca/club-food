@@ -11,10 +11,9 @@ const CardShop = ({ cardShopFruit }) => {
       <div className="card-right">
         <h3>Um novo jeito de pedir frutas e verduras</h3>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-          tempore vero tenetur quasi enim, tempora facilis sit beatae! Ipsum
-          exercitationem adipisci quae atque eaque, labore odit iste repellat
-          consequuntur quam?
+          Seu novo jeito de obter frutas, verduras e legumes frescos e de melhor
+          qualidade, com toda praticidade e bem cuidado direto para sua casa.
+          Levamos até você o que a natureza tem de melhor.
         </p>
 
         <button type="button">
