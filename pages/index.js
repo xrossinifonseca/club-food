@@ -1,7 +1,7 @@
 import React from "react";
 import { client } from "../lib/client";
 import { HeroBanner } from "../components";
-import { Ofertas } from "../components/products/ofertas";
+import { Ofertas } from "../components/index";
 import CardShop from "../components/CardShop";
 import { GiBananaPeeled, GiTomato, GiBroccoli } from "react-icons/gi";
 import { BiDrink } from "react-icons/bi";
