@@ -14,7 +14,11 @@ const MenuSection = ({ menu }) => {
       <div className="bg-white w-[90%] sm:w-[65%] xl:w-1/2 h-[80px] rounded-full shadow-xl flex items-center justify-around">
         {images.map((image) => (
           <>
-            <img src={image} className="w-[30px] lg:w-[40px]" />
+            <img
+              src={image}
+              alt="images-menu"
+              className="w-[30px] lg:w-[40px]"
+            />
           </>
         ))}
       </div>
