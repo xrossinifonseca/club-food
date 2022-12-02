@@ -13,7 +13,7 @@ const CepForm = () => {
         setLocal(data);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

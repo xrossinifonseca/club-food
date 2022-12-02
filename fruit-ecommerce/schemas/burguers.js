@@ -1,6 +1,6 @@
 export default {
-  name: "bebidas",
-  title: "Bebidas",
+  name: "burguers",
+  title: "Burguers",
   type: "document",
   fields: [
     {

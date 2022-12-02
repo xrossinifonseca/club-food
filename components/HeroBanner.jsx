@@ -9,6 +9,8 @@ import CepForm from "./CepForm";
 import { useStateContext } from "../context/StateContext";
 
 const HeroBanner = ({ heroBanner, search }) => {
+  const { image, largeText1, smallText } = heroBanner;
+
   const {
     addToCart,
     qty,
@@ -41,68 +43,25 @@ const HeroBanner = ({ heroBanner, search }) => {
   };
 
   return (
-    <div className="hero-banner-container">
-      <div className="hero-banner">
-        <h1>{heroBanner.largeText1}</h1>
+    <div className="w-screen flex items-center justify-around">
+      <div className="h-auto ">
+        <h1 className="font-bold  text-xl sm:text-4xl lg:text-6xl">
+          Não deixe para <br /> <span className="text-details">depois</span> o
+          que se <br />
+          pode comer <span className="text-details">hoje.</span>
+        </h1>
 
-        <form onSubmit={handleChange} className="search">
-          <input
-            type="text"
-            placeholder="buscar produto"
-            value={searchItem}
-            onChange={(e) => setSearchItem(e.target.value)}
-          />
-          <AiOutlineSearch className="icon-search" />
-        </form>
-        {searchItem.length >= 1 && (
-          <div className="search-container">
-            <p>
-              produtos para <span>{searchItem}</span>
-            </p>
-            {searchProduct(info).map((item) => (
-              <div key={item._id}>
-                <div className="search-product">
-                  <img src={urlFor(item.image[0])} className="search-image" />
-                  <h3>{item.name}</h3>
-                  <p>R$ {item.price}</p>
-                </div>
-                <button
-                  className="btn-search"
-                  onClick={() => addToCart(item, qty)}
-                >
-                  adiconar
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="hero-desc">
-          <h3>Seu hortifruti online.</h3>
-          <h4>{heroBanner.desc}</h4>
-          <h5>{heroBanner.smallText}</h5>
-
-          <Scroll to="cardshop" smooth={true} duration={500}>
-            <button type="button" className="btn">
-              Shop
-            </button>
-          </Scroll>
+        <div className="flex space-x-2 sm:space-x-4 mt-8">
+          <button className="transform  duration-700 ease-out hover:scale-125 bg-details h-10 p-2 text-white font-semibold rounded-full">
+            Peça agora
+          </button>
+          <button className="border transform  duration-700 ease-out hover:scale-125 border-details w-24 h-10 p-2 text-black font-semibold rounded-full">
+            Menu
+          </button>
         </div>
       </div>
-      <div className="hero-right">
-        <div className="hero-icon">
-          <p onClick={() => setShowCep(true)}>
-            Informe seu CEP <GoLocation size={20} />
-          </p>
-        </div>
-        <img
-          src={urlFor(heroBanner.image)}
-          className="hero-image"
-          alt="cart-logo"
-        />
-      </div>
 
-      {showCep && <CepForm active={() => setShowCep(false)} />}
+      <img src={urlFor(image)} className="w-1/4" />
     </div>
   );
 };

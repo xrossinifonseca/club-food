@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
-import { GiOrange } from "react-icons/gi";
-import { BsCart4 } from "react-icons/bs";
-import { BiFoodMenu } from "react-icons/bi";
-import { GoLocation } from "react-icons/go";
+import React from "react";
+import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
+import { BsBag } from "react-icons/bs";
 import Cart from "./Cart";
-import Link from "next/link";
 import { useStateContext } from "../context/StateContext";
 import SideMenu from "./SideMenu";
 import CepForm from "./CepForm";
@@ -21,45 +18,21 @@ const NavBar = () => {
   } = useStateContext();
 
   return (
-    <div className="navbar-container">
-      <Link href="/">
-        <div>
-          <GiOrange size={30} className="nav-icon" />
+    <nav className="w-full  bg-primary">
+      <div className="w-full flex items-center justify-between p-4 ">
+        <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center lg:cursor-pointer">
+          <AiOutlineMenu className="text-xl text-details" />
         </div>
-      </Link>
 
-      <ul className="list">
-        <Link href="/">
-          <li>Home</li>
-        </Link>
-        <Link href="/produtos/frutas">
-          <li>Frutas</li>
-        </Link>
-        <Link href="/produtos/legumes">
-          <li>Legumes</li>
-        </Link>
-        <Link href="/produtos/verduras">
-          <li>Verduras</li>
-        </Link>
-        <Link href="/produtos/bebidas">
-          <li>bebidas</li>
-        </Link>
-      </ul>
-
-      <div className="side-menu">
-        <BiFoodMenu className="menu-icon" onClick={() => setSideMenu(true)} />
-        <GoLocation className="cep-icon" onClick={() => setShowCep(true)} />
+        <div className="flex text-xl text-details space-x-4">
+          <AiOutlineUser />
+          <div className="relative">
+            <BsBag className="text-xl" />
+            <span className="absolute bg-details top-3 left-2  h-4 w-4 text-center text-[12px] text-white rounded-full "></span>
+          </div>
+        </div>
       </div>
-
-      <div className="cart">
-        <BsCart4 size={30} onClick={() => setShowCart(true)} />
-        <span className="cart-item-qty">{totalQuantitites}</span>
-      </div>
-
-      {showCart && <Cart />}
-      {sideMenu && <SideMenu />}
-      {showCep && <CepForm />}
-    </div>
+    </nav>
   );
 };
 
