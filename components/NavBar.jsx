@@ -1,26 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 import Cart from "./Cart";
-import { useStateContext } from "../context/StateContext";
 import SideMenu from "./SideMenu";
-import CepForm from "./CepForm";
 
 const NavBar = () => {
-  const {
-    showCart,
-    setShowCart,
-    totalQuantitites,
-    sideMenu,
-    setSideMenu,
-    showCep,
-    setShowCep,
-  } = useStateContext();
+  const [openSideMenu, setOpenMenu] = useState(false);
 
   return (
     <nav className="w-full  bg-primary">
       <div className="w-full flex items-center justify-between p-4 ">
-        <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center lg:cursor-pointer">
+        <div
+          className="w-14 h-14 bg-white rounded-full flex items-center justify-center lg:cursor-pointer"
+          onClick={() => setOpenMenu(true)}
+        >
           <AiOutlineMenu className="text-xl text-details" />
         </div>
 
@@ -32,6 +25,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
+      {openSideMenu && <SideMenu active={setOpenMenu} />}
     </nav>
   );
 };
