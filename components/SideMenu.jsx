@@ -12,10 +12,10 @@ const SideMenu = ({ active }) => {
       className="fixed top-0 left-0 w-screen h-screen z-50"
       aria-label="Sidebar"
     >
-      <div className=" w-full sm:w-1/5 h-full overflow-y-auto py-4 px-3 bg-details relative">
+      <div className=" w-full sm:w-1/5 h-full overflow-y-auto py-4 px-3 bg-white relative">
         <AiFillCloseCircle
           onClick={closeMenu}
-          className="absolute right-2 text-white text-2xl "
+          className="absolute right-2 text-details text-2xl "
         >
           close
         </AiFillCloseCircle>
@@ -23,7 +23,7 @@ const SideMenu = ({ active }) => {
           <li>
             <a
               href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg bg-gray-100 "
+              className="flex items-center p-2 text-base font-normal text-black rounded-lg bg-gray-100 "
             >
               <svg
                 aria-hidden="true"
@@ -41,7 +41,7 @@ const SideMenu = ({ active }) => {
           <li>
             <a
               href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <svg
                 aria-hidden="true"
@@ -61,7 +61,7 @@ const SideMenu = ({ active }) => {
           <li>
             <a
               href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <svg
                 aria-hidden="true"
@@ -82,7 +82,7 @@ const SideMenu = ({ active }) => {
           <li>
             <a
               href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <svg
                 aria-hidden="true"
@@ -99,7 +99,7 @@ const SideMenu = ({ active }) => {
           <li>
             <a
               href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <svg
                 aria-hidden="true"
@@ -116,7 +116,7 @@ const SideMenu = ({ active }) => {
           <li>
             <a
               href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <svg
                 aria-hidden="true"
@@ -133,7 +133,7 @@ const SideMenu = ({ active }) => {
           <li>
             <a
               href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <svg
                 aria-hidden="true"

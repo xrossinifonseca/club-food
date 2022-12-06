@@ -10,13 +10,11 @@ export const StateContext = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantitites, setTotalQuantitites] = useState(0);
   const [qty, setQty] = useState(1);
-  // abri mobile menu
-  const [sideMenu, setSideMenu] = useState(false);
-  // cep form
-  const [showCep, setShowCep] = useState(false);
+
   const [cep, setCep] = useState("");
   const [local, setLocal] = useState([]);
   const [message, setMessage] = useState(true);
+
   // campo busca de produtos
   const [searchItem, setSearchItem] = useState("");
   const [info, setInfo] = useState([]);
@@ -27,10 +25,11 @@ export const StateContext = ({ children }) => {
 
   // Adicionar produto no carrinho
   const addToCart = (product, quantity) => {
+    const updateCart = [...cartItems];
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
     );
-    // atualizar preço
+
     setTotalPrice(
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
     );
@@ -38,18 +37,17 @@ export const StateContext = ({ children }) => {
     setTotalQuantitites(
       (preveTotalQuantitites) => preveTotalQuantitites + quantity
     );
+
     if (checkProductInCart) {
-      const updatedCartItems = cartItems.map((cartProduct) => {
-        if (cartProduct._id === product._id) {
-          return { ...cartProduct, quantity: cartProduct.quantity + quantity };
-        }
-      });
-      setCartItems(updatedCartItems);
+      checkProductInCart.quantity += quantity;
     } else {
       product.quantity = quantity;
-      setCartItems([...cartItems, { ...product }]);
+      const newProduct = { ...product };
+      updateCart.push(newProduct);
     }
-    toast.success(` ${product.name} adicionado ao carrinho`); // ${qty}
+
+    setCartItems(updateCart);
+    toast.success(` ${product.name} adicionado ao carrinho`);
   };
 
   // remover produto
@@ -74,18 +72,14 @@ export const StateContext = ({ children }) => {
     const newCartItems = cartItems.filter((item) => item._id !== id);
 
     if (value === "inc") {
-      setCartItems([
-        ...newCartItems,
-        { ...foundProduct, quantity: foundProduct.quantity + 1 },
-      ]);
+      foundProduct.quantity += 1;
+
       setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
       setTotalQuantitites((preveTotalQuantitites) => preveTotalQuantitites + 1);
     } else if (value === "dec") {
       if (foundProduct.quantity > 1) {
-        setCartItems([
-          ...newCartItems,
-          { ...foundProduct, quantity: foundProduct.quantity - 1 },
-        ]);
+        foundProduct.quantity -= 1;
+
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
         setTotalQuantitites(
           (preveTotalQuantitites) => preveTotalQuantitites - 1
@@ -119,10 +113,6 @@ export const StateContext = ({ children }) => {
         totalPrice,
         onRemove,
         toggleCartItemQuantity,
-        sideMenu,
-        setSideMenu,
-        showCep,
-        setShowCep,
         cep,
         setCep,
         local,

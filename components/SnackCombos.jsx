@@ -1,7 +1,10 @@
 import React from "react";
+import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 
 const SnackCombos = ({ combos }) => {
+  const { addToCart } = useStateContext();
+
   return (
     <section className="w-full h-auto mt-20 flex flex-col items-center justify-center p-4">
       <div className=" w-full lg:w-4/5 ">
@@ -28,7 +31,10 @@ const SnackCombos = ({ combos }) => {
               className="w-[30%]"
             />
 
-            <buttom className="absolute -bottom-2 bg-details rounded-full h-10 text-center text-white font-semibold p-2">
+            <buttom
+              className="absolute -bottom-2 bg-details rounded-full h-10 text-center text-white font-semibold p-2"
+              onClick={() => addToCart(combo, 1)}
+            >
               Pedir agora
             </buttom>
           </div>

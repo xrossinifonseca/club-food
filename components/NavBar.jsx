@@ -6,6 +6,7 @@ import SideMenu from "./SideMenu";
 
 const NavBar = () => {
   const [openSideMenu, setOpenMenu] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
 
   return (
     <nav className="w-full  bg-primary">
@@ -19,13 +20,17 @@ const NavBar = () => {
 
         <div className="flex text-xl text-details space-x-4">
           <AiOutlineUser />
-          <div className="relative">
+          <div
+            className="relative  lg:cursor-pointer"
+            onClick={() => setOpenCart(true)}
+          >
             <BsBag className="text-xl" />
             <span className="absolute bg-details top-3 left-2  h-4 w-4 text-center text-[12px] text-white rounded-full "></span>
           </div>
         </div>
       </div>
       {openSideMenu && <SideMenu active={setOpenMenu} />}
+      {openCart && <Cart active={setOpenCart} />}
     </nav>
   );
 };

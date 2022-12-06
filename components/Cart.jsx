@@ -1,75 +1,84 @@
 import React from "react";
-import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft } from "react-icons/ai";
-import { TiDeleteOutline } from "react-icons/ti";
+import {
+  AiOutlineMinus,
+  AiOutlinePlus,
+  AiOutlineArrowLeft,
+  AiOutlineClose,
+} from "react-icons/ai";
 import toast, { Toast } from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 
-const Cart = () => {
+const Cart = ({ active }) => {
   const {
-    setShowCart,
     cartItems,
     totalQuantitites,
     totalPrice,
     onRemove,
     toggleCartItemQuantity,
   } = useStateContext();
+
   return (
-    <div className="cart-wrapper">
-      <div className="cart-container">
-        <button
-          type="button"
-          className="cart-heading"
-          onClick={() => setShowCart(false)}
-        >
-          <AiOutlineLeft />
-          <span className="heading">sua sacola</span>
-          <span className="cart-num-items">({totalQuantitites})</span>
-        </button>
+    <aside className="fixed w-full sm:w-1/2 lg:w-1/4   h-screen bg-white right-0 top-0 z-50">
+      <div className="p-4">
+        <div className="w-full flex items-center justify-between">
+          <button
+            type="button"
+            className="flex items-center justify-center text-xl font-bold"
+            onClick={() => active(false)}
+          >
+            <AiOutlineArrowLeft />
+          </button>
+
+          <span className="text-details font-semibold">
+            sua sacola ({totalQuantitites})
+          </span>
+        </div>
+
         {cartItems.length < 1 && (
-          <div className="empty-cart">
+          <div className="mt-10 text-xl text-center">
             {/* <AiOutlineShopping size={150} /> */}
-            <h3>Seu carrinho esta vazio</h3>
+            <h3>Sua sacola esta vazia</h3>
           </div>
         )}
-        <div className="product-container">
+        <div className="w-full h-[450px] overflow-auto mt-4 space-y-4 ">
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
-              <div className="product" key={item._id}>
-                <img src={urlFor(item?.image[0])} className="cart-image" />
-                <div className="item-desc">
-                  <div className="flex top">
-                    <h5>{item.name}</h5>
-                    <h4>R${item.price}</h4>
+              <div
+                className="flex h-auto items-center bg-primary relative"
+                key={item._id}
+              >
+                <img src={urlFor(item?.image[0])} className="w-[25%]" />
+                <button
+                  type="button"
+                  className="absolute top-2 right-2 text-details"
+                  onClick={() => onRemove(item)}
+                >
+                  <AiOutlineClose />
+                </button>
+                <div className="p-2 space-y-2">
+                  <div>
+                    <h5 className="font-semibold">{item.name}</h5>
+                    <h4 className="text-details font-semibold">
+                      R${item.price}
+                    </h4>
                   </div>
-                  <div className="flex bottom">
-                    <div>
-                      <p className="quantity-desc">
-                        <span
-                          className="minus"
-                          onClick={() =>
-                            toggleCartItemQuantity(item._id, "dec")
-                          }
-                        >
-                          <AiOutlineMinus />
-                        </span>
-                        <span className="num">{item.quantity}</span>
-                        <span
-                          className="plus"
-                          onClick={() =>
-                            toggleCartItemQuantity(item._id, "inc")
-                          }
-                        >
-                          <AiOutlinePlus />
-                        </span>
-                      </p>
-                    </div>
+
+                  <div className="inline-flex items-center text-[14px]  space-x-2 absolute bottom-2 right-2">
                     <button
                       type="button"
-                      className="remove-item"
-                      onClick={() => onRemove(item)}
+                      onClick={() => toggleCartItemQuantity(item._id, "dec")}
+                      className="border border-black h-6 w-6 rounded-full flex justify-center items-center"
                     >
-                      <TiDeleteOutline />
+                      <AiOutlineMinus />
+                    </button>
+                    <span className="font-semibold">{item.quantity}x</span>
+                    <button
+                      type="button"
+                      onClick={() => toggleCartItemQuantity(item._id, "inc")}
+                      className="border border-details text-details h-6 w-6 rounded-full flex justify-center items-center"
+                    >
+                      <AiOutlinePlus />
                     </button>
                   </div>
                 </div>
@@ -77,20 +86,24 @@ const Cart = () => {
             ))}
         </div>
         {cartItems.length >= 1 && (
-          <div className="cart-bottom">
-            <div className="total">
+          <div className="w-full absolute bottom-0 left-0">
+            <div className="flex justify-between p-4 font-semibold">
               <h3>Subtotal:</h3>
               <h3>R${totalPrice.toFixed(2)} </h3>
             </div>
-            <div className="btn-container">
-              <button type="button" className="btn-card">
+
+            <div className="w-full flex justify-center p-2">
+              <button
+                type="button"
+                className="bg-details w-3/5 h-8 rounded text-white "
+              >
                 Fazer pedido
               </button>
             </div>
           </div>
         )}
       </div>
-    </div>
+    </aside>
   );
 };
 
