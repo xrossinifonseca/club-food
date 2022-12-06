@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import {
   AiOutlineMinus,
@@ -5,7 +7,6 @@ import {
   AiOutlineArrowLeft,
   AiOutlineClose,
 } from "react-icons/ai";
-import toast, { Toast } from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 
@@ -17,6 +18,13 @@ const Cart = ({ active }) => {
     onRemove,
     toggleCartItemQuantity,
   } = useStateContext();
+
+  const router = useRouter();
+
+  const checkOut = () => {
+    active(false);
+    router.push("/checkout");
+  };
 
   return (
     <aside className="fixed w-full sm:w-1/2 lg:w-1/4   h-screen bg-white right-0 top-0 z-50">
@@ -37,7 +45,6 @@ const Cart = ({ active }) => {
 
         {cartItems.length < 1 && (
           <div className="mt-10 text-xl text-center">
-            {/* <AiOutlineShopping size={150} /> */}
             <h3>Sua sacola esta vazia</h3>
           </div>
         )}
@@ -45,10 +52,10 @@ const Cart = ({ active }) => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div
-                className="flex h-auto items-center bg-primary relative"
+                className="flex h-auto items-center bg-primary relative p-2"
                 key={item._id}
               >
-                <img src={urlFor(item?.image[0])} className="w-[25%]" />
+                <img src={urlFor(item?.image[0])} className="w-[20%]" />
                 <button
                   type="button"
                   className="absolute top-2 right-2 text-details"
@@ -93,12 +100,15 @@ const Cart = ({ active }) => {
             </div>
 
             <div className="w-full flex justify-center p-2">
+              {/* <Link href="/checkout"> */}
               <button
                 type="button"
                 className="bg-details w-3/5 h-8 rounded text-white "
+                onClick={checkOut}
               >
-                Fazer pedido
+                Formas de pagamentos
               </button>
+              {/* </Link> */}
             </div>
           </div>
         )}

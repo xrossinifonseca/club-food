@@ -8,14 +8,17 @@ import {
   SnackCombos,
 } from "../components";
 import { Ofertas } from "../components/index";
+import NavBar from "../components/NavBar";
 
 const index = ({ bannerData, produtos, burguers, combos }) => {
   const [heroDiscount, heroBanner] = bannerData;
 
+  const products = [burguers, produtos];
+
   return (
     <>
       <HeroBanner heroBanner={heroBanner} />
-      <MenuSection menu={burguers} />
+      <MenuSection menu={products} />
       <SnackCombos combos={combos} />
       <Info />
       <Restaurant />

@@ -5,12 +5,29 @@ import SelectProduct from "./SelectProduct";
 const MenuSection = ({ menu }) => {
   const [onSelect, setOnSelect] = useState(false);
   const [product, setProduct] = useState([]);
+  const [categoryItems, setCategoryItems] = useState("burguers");
 
-  const images = [
-    "/assets/burguer.png",
-    "/assets/pizzaSearch.png",
-    "/assets/drink.png",
-    "/assets/friesSearch.png",
+  const searchICategory = [
+    {
+      id: 1,
+      name: "burguers",
+      image: "/assets/burguer.png",
+    },
+    {
+      id: 2,
+      name: "produtos",
+      image: "/assets/pizzaSearch.png",
+    },
+    {
+      id: 3,
+      name: "bebidas",
+      image: "/assets/drink.png",
+    },
+    {
+      id: 4,
+      name: "fries",
+      image: "/assets/friesSearch.png",
+    },
   ];
 
   const selectProduct = (item) => {
@@ -18,23 +35,37 @@ const MenuSection = ({ menu }) => {
     setOnSelect(true);
   };
 
+  const searchItem = (products) => {
+    let items = [];
+
+    products.map((product) => {
+      product.filter((item) => {
+        if (item._type === categoryItems) {
+          return items.push(item);
+        }
+      });
+    });
+    return items;
+  };
+
   return (
     <section className="w-full flex flex-col items-center  mt-40 ">
       <div className="bg-white w-[90%] sm:w-[65%] xl:w-1/2 h-[80px] rounded-full shadow-xl flex items-center justify-around">
-        {images.map((image) => (
+        {searchICategory.map((image) => (
           <>
             <img
-              key={image}
-              src={image}
+              key={image.id}
+              src={image.image}
               alt="images-menu"
               className="w-[30px] lg:w-[40px]"
+              onClick={() => setCategoryItems(image.name)}
             />
           </>
         ))}
       </div>
 
       <div className=" h-auto grid grid-cols-2 sm:grid-cols-3  gap-x-5 lg:gap-x-20 gap-y-10 mt-20">
-        {menu.map((item) => (
+        {searchItem(menu).map((item) => (
           <div
             key={item._id}
             className=" w-[150px]  duration-700 ease-out lg:hover:scale-125 h-[200px] lg:w-[200px] lg:h-[250px]  bg-white rounded-xl flex flex-col items-center p-2 "
