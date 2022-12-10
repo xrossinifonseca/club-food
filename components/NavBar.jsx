@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 import { useStateContext } from "../context/StateContext";

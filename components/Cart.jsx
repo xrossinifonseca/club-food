@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
@@ -19,16 +19,9 @@ const Cart = ({ active }) => {
     toggleCartItemQuantity,
   } = useStateContext();
 
-  const router = useRouter();
-
-  const checkOut = () => {
-    active(false);
-    router.push("/checkout");
-  };
-
   return (
-    <aside className="fixed w-full sm:w-1/2 lg:w-1/4   h-screen bg-white right-0 top-0 z-50">
-      <div className="p-4">
+    <aside className="fixed w-screen h-screen   flex justify-end top-0 z-50">
+      <div className="p-4 w-full h-full sm:w-1/2 lg:w-1/4  bg-white relative">
         <div className="w-full flex items-center justify-between">
           <button
             type="button"
@@ -100,15 +93,15 @@ const Cart = ({ active }) => {
             </div>
 
             <div className="w-full flex justify-center p-2">
-              {/* <Link href="/checkout"> */}
-              <button
-                type="button"
-                className="bg-details w-3/5 h-8 rounded text-white "
-                onClick={checkOut}
-              >
-                Formas de pagamentos
-              </button>
-              {/* </Link> */}
+              <Link href="/entrar">
+                <button
+                  type="button"
+                  className="bg-details w-3/5 h-8 rounded text-white "
+                  onClick={() => active(false)}
+                >
+                  Formas de pagamentos
+                </button>
+              </Link>
             </div>
           </div>
         )}

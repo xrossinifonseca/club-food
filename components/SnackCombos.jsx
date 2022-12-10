@@ -31,12 +31,12 @@ const SnackCombos = ({ combos }) => {
               className="w-[30%]"
             />
 
-            <buttom
+            <button
               className="absolute -bottom-2 bg-details rounded-full h-10 text-center text-white font-semibold p-2"
               onClick={() => addToCart(combo, 1)}
             >
               Pedir agora
-            </buttom>
+            </button>
           </div>
         ))}
       </div>

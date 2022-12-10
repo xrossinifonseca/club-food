@@ -52,9 +52,11 @@ const HeroBanner = ({ heroBanner, search }) => {
         </h1>
 
         <div className="flex space-x-2 sm:space-x-4 mt-8">
-          <button className="transform  duration-700 ease-out hover:scale-125 bg-details h-10 p-2 text-white font-semibold rounded-full">
-            Peça agora
-          </button>
+          <Scroll to="menu" smooth={true}>
+            <button className="transform  duration-700 ease-out hover:scale-125 bg-details h-10 p-2 text-white font-semibold rounded-full">
+              Peça agora
+            </button>
+          </Scroll>
           <button className="border transform  duration-700 ease-out hover:scale-125 border-details w-24 h-10 p-2 text-black font-semibold rounded-full">
             Menu
           </button>

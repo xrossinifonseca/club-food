@@ -49,18 +49,16 @@ const MenuSection = ({ menu }) => {
   };
 
   return (
-    <section className="w-full flex flex-col items-center  mt-40 ">
+    <section id="menu" className="w-full flex flex-col items-center  mt-40 ">
       <div className="bg-white w-[90%] sm:w-[65%] xl:w-1/2 h-[80px] rounded-full shadow-xl flex items-center justify-around">
         {searchICategory.map((image) => (
-          <>
-            <img
-              key={image.id}
-              src={image.image}
-              alt="images-menu"
-              className="w-[30px] lg:w-[40px]"
-              onClick={() => setCategoryItems(image.name)}
-            />
-          </>
+          <img
+            key={image.id}
+            src={image.image}
+            alt="images-menu"
+            className="w-[30px] lg:w-[40px]"
+            onClick={() => setCategoryItems(image.name)}
+          />
         ))}
       </div>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../components/checkout/Login";
+import Login from "../components/form/Login";
 import { client } from "../lib/client";
 
 const checkout = ({ bannerData }) => {

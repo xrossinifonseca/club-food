@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { GiHamburger } from "react-icons/gi";
@@ -33,7 +34,7 @@ const SideMenu = ({ active }) => {
             href="#"
             className="flex items-center justify-center  p-2 text-base font-semibold text-black rounded-lg bg-primary "
           >
-            <span className="ml-3">Home</span>
+            <Link href="/">Home</Link>
           </li>
           <li
             href="#"

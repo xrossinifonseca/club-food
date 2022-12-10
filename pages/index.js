@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { client } from "../lib/client";
 import {
   HeroBanner,
