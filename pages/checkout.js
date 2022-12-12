@@ -1,19 +1,14 @@
 import React from "react";
-import Register from "../components/form/Register";
 import { getSession } from "next-auth/react";
 
-const Registrar = () => {
-  return (
-    <>
-      <Register />
-    </>
-  );
+const CheckOut = () => {
+  return <div>CheckOut</div>;
 };
 
 export const getServerSideProps = async (context) => {
   const session = await getSession(context);
 
-  if (session) {
+  if (!session) {
     return {
       redirect: {
         destination: "/",
@@ -28,4 +23,4 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default Registrar;
+export default CheckOut;

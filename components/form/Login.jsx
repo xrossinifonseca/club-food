@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { urlFor } from "../../lib/client";
 import { AiFillLinkedin } from "react-icons/ai";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 
 const Login = ({ banner }) => {
   const { image } = banner;
-
-  const signUpWithLinkedin = () => {
-    window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&state=true&client_id=${process.env.NEXT_PUBLIC_LINKEDIN_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_LINKEDIN_REDIRECT_URL}&scope=r_liteprofile%20r_emailaddress`;
-  };
+  const route = useRouter();
 
   return (
     <div className="w-full lg:flex p-4  ">
@@ -26,7 +24,9 @@ const Login = ({ banner }) => {
 
           <button
             type="button"
-            onClick={() => signUpWithLinkedin()}
+            onClick={() =>
+              signIn("linkedin", { callbackUrl: "http://localhost:3000/" })
+            }
             className="bg-buttonin hover:opacity-80 text-white font-semibold w-[80%] h-10 rounded flex items-center justify-center "
           >
             <AiFillLinkedin className="text-xl " /> Entrar com LinkedIn
@@ -39,12 +39,15 @@ const Login = ({ banner }) => {
             Email
           </button>
 
-          <Link href="/registrar">
-            <h3 className="text-gray-500 font-medium lg:cursor-pointer hover:opacity-70">
-              Não possui conta?{" "}
-              <span className="text-details">Cadastre-se agora!</span>
-            </h3>
-          </Link>
+          <span className="text-gray-500 font-medium text-center sm:flex ">
+            Não possui uma conta?{" "}
+            <h2
+              className="sm:ml-2 text-details lg:cursor-pointer hover:opacity-70"
+              onClick={() => route.push("/registrar")}
+            >
+              Cadastre-se agora.
+            </h2>
+          </span>
         </div>
       </div>
     </div>

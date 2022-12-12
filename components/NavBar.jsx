@@ -4,8 +4,11 @@ import { BsBag } from "react-icons/bs";
 import { useStateContext } from "../context/StateContext";
 import Cart from "./Cart";
 import SideMenu from "./SideMenu";
+import { useSession } from "next-auth/react";
 
 const NavBar = () => {
+  const { data: session } = useSession();
+
   const [openSideMenu, setOpenMenu] = useState(false);
   const [openCart, setOpenCart] = useState(false);
 
@@ -23,6 +26,7 @@ const NavBar = () => {
 
         <div className="flex text-xl text-details space-x-4">
           <AiOutlineUser />
+
           <div
             className="relative  lg:cursor-pointer"
             onClick={() => setOpenCart(true)}

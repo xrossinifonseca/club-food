@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { client } from "../lib/client";
 import {
   HeroBanner,
@@ -7,12 +7,9 @@ import {
   Restaurant,
   SnackCombos,
 } from "../components";
-import { Ofertas } from "../components/index";
-import NavBar from "../components/NavBar";
 
-const index = ({ bannerData, produtos, burguers, combos }) => {
+const Index = ({ bannerData, produtos, burguers, combos }) => {
   const [heroDiscount, heroBanner] = bannerData;
-
   const products = [burguers, produtos];
 
   return (
@@ -26,7 +23,7 @@ const index = ({ bannerData, produtos, burguers, combos }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
   const bannerQuery = '*[_type == "banner"]';
   const bannerData = await client.fetch(bannerQuery);
   const queryProdtuos = '*[_type =="produtos"]';
@@ -46,4 +43,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default index;
+export default Index;

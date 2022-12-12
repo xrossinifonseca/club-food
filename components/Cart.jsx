@@ -9,6 +9,7 @@ import {
 } from "react-icons/ai";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
+import { useSession } from "next-auth/react";
 
 const Cart = ({ active }) => {
   const {
@@ -18,6 +19,18 @@ const Cart = ({ active }) => {
     onRemove,
     toggleCartItemQuantity,
   } = useStateContext();
+
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  const checkPedido = () => {
+    active(false);
+    if (!session) {
+      router.push("/entrar");
+    } else {
+      router.push("/checkout");
+    }
+  };
 
   return (
     <aside className="fixed w-screen h-screen   flex justify-end top-0 z-50">
@@ -93,15 +106,13 @@ const Cart = ({ active }) => {
             </div>
 
             <div className="w-full flex justify-center p-2">
-              <Link href="/entrar">
-                <button
-                  type="button"
-                  className="bg-details w-3/5 h-8 rounded text-white "
-                  onClick={() => active(false)}
-                >
-                  Formas de pagamentos
-                </button>
-              </Link>
+              <button
+                type="button"
+                className="bg-details w-3/5 h-8 rounded text-white "
+                onClick={checkPedido}
+              >
+                Formas de pagamentos
+              </button>
             </div>
           </div>
         )}
