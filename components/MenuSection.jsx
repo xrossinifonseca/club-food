@@ -2,56 +2,26 @@ import React, { useState } from "react";
 import { urlFor } from "../lib/client";
 import { AiFillStar } from "react-icons/ai";
 import SelectProduct from "./SelectProduct";
+import { selectCategory } from "../helpers/categorys";
+import { useStateContext } from "../context/StateContext";
+
 const MenuSection = ({ menu }) => {
   const [onSelect, setOnSelect] = useState(false);
   const [product, setProduct] = useState([]);
-  const [categoryItems, setCategoryItems] = useState("burguers");
-
-  const searchICategory = [
-    {
-      id: 1,
-      name: "burguers",
-      image: "/assets/burguer.png",
-    },
-    {
-      id: 2,
-      name: "produtos",
-      image: "/assets/pizzaSearch.png",
-    },
-    {
-      id: 3,
-      name: "bebidas",
-      image: "/assets/drink.png",
-    },
-    {
-      id: 4,
-      name: "fries",
-      image: "/assets/friesSearch.png",
-    },
-  ];
+  const [categoryItems, setCategoryItems] = useState("burgers");
+  const { searchItem } = useStateContext();
 
   const selectProduct = (item) => {
     setProduct(item);
     setOnSelect(true);
   };
 
-  const searchItem = (products) => {
-    let items = [];
-
-    products.map((product) => {
-      product.filter((item) => {
-        if (item._type === categoryItems) {
-          return items.push(item);
-        }
-      });
-    });
-    return items;
-  };
+  const products = searchItem(menu, categoryItems);
 
   return (
     <section id="menu" className="w-full flex flex-col items-center  mt-40 ">
-      <div className="bg-white w-[90%] sm:w-[65%] xl:w-1/2 h-[80px] rounded-full shadow-xl flex items-center justify-around">
-        {searchICategory.map((image) => (
+      <article className="bg-white w-[90%] sm:w-[65%] xl:w-1/2 h-[80px] rounded-full shadow-xl flex items-center justify-around">
+        {selectCategory.map((image) => (
           <img
             key={image.id}
             src={image.image}
@@ -60,10 +30,10 @@ const MenuSection = ({ menu }) => {
             onClick={() => setCategoryItems(image.name)}
           />
         ))}
-      </div>
+      </article>
 
-      <div className=" h-auto grid grid-cols-2 sm:grid-cols-3  gap-x-5 lg:gap-x-20 gap-y-10 mt-20">
-        {searchItem(menu).map((item) => (
+      <article className=" h-auto grid grid-cols-2 sm:grid-cols-3  gap-x-5 lg:gap-x-20 gap-y-10 mt-20">
+        {products.map((item) => (
           <div
             key={item._id}
             className=" w-[150px]  duration-700 ease-out lg:hover:scale-125 h-[200px] lg:w-[200px] lg:h-[250px]  bg-white rounded-xl flex flex-col items-center p-2 "
@@ -88,7 +58,7 @@ const MenuSection = ({ menu }) => {
             </div>
           </div>
         ))}
-      </div>
+      </article>
       {onSelect && <SelectProduct item={setOnSelect} product={product} />}
     </section>
   );

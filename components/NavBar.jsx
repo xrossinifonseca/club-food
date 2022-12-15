@@ -5,14 +5,20 @@ import { useStateContext } from "../context/StateContext";
 import Cart from "./Cart";
 import SideMenu from "./SideMenu";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const NavBar = () => {
   const { data: session } = useSession();
 
   const [openSideMenu, setOpenMenu] = useState(false);
   const [openCart, setOpenCart] = useState(false);
-
   const { totalQuantitites } = useStateContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    setOpenMenu(false);
+    setOpenCart(false);
+  }, [router.query]);
 
   return (
     <nav className="w-full  bg-primary">
@@ -23,6 +29,10 @@ const NavBar = () => {
         >
           <AiOutlineMenu className="text-xl text-details" />
         </div>
+
+        <h1 className="hidden lg:block text-white font-bold text-2xl">
+          Food <span className="text-details">Club</span>
+        </h1>
 
         <div className="flex text-xl text-details space-x-4">
           <AiOutlineUser />

@@ -4,26 +4,21 @@ import { toast } from "react-hot-toast";
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
-  // logica cart
-  const [showCart, setShowCart] = useState(false);
+  // CART
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantitites, setTotalQuantitites] = useState(0);
-  const [qty, setQty] = useState(1);
-
-  const [cep, setCep] = useState("");
-  const [local, setLocal] = useState([]);
-  const [message, setMessage] = useState(true);
+  // const [qty, setQty] = useState(1);
 
   // campo busca de produtos
-  const [searchItem, setSearchItem] = useState("");
+  // const [searchItem, setSearchItem] = useState("");
   const [info, setInfo] = useState([]);
   const [serchParams] = useState(["name", "price", "image"]);
 
   let foundProduct;
   let index;
 
-  // Adicionar produto no carrinho
+  // Add product cart
   const addToCart = (product, quantity) => {
     const updateCart = [...cartItems];
     const checkProductInCart = cartItems.find(
@@ -50,7 +45,7 @@ export const StateContext = ({ children }) => {
     toast.success(` ${product.name} adicionado ao carrinho`);
   };
 
-  // remover produto
+  // remove product
   const onRemove = (product) => {
     foundProduct = cartItems.find((item) => item._id === product._id);
     const newCartItems = cartItems.filter((item) => item._id !== product._id);
@@ -89,38 +84,39 @@ export const StateContext = ({ children }) => {
   };
 
   // aumentar e diminuir produtos
-  const incQty = () => {
-    setQty((prevQty) => prevQty + 1);
-  };
-  const decQty = () => {
-    setQty((prevQty) => {
-      if (prevQty - 1 < 1) return 1;
-      return prevQty - 1;
+  // const incQty = () => {
+  //   setQty((prevQty) => prevQty + 1);
+  // };
+  // const decQty = () => {
+  //   setQty((prevQty) => {
+  //     if (prevQty - 1 < 1) return 1;
+  //     return prevQty - 1;
+  //   });
+  // };
+
+  const searchItem = (products, category) => {
+    let items = [];
+
+    products.map((product) => {
+      product.filter((item) => {
+        if (item._type === category) {
+          return items.push(item);
+        }
+      });
     });
+    return items;
   };
 
   return (
     <Context.Provider
       value={{
-        showCart,
-        setShowCart,
         cartItems,
         addToCart,
-        incQty,
-        decQty,
-        qty,
         totalQuantitites,
         totalPrice,
         onRemove,
         toggleCartItemQuantity,
-        cep,
-        setCep,
-        local,
-        setLocal,
-        message,
-        setMessage,
         searchItem,
-        setSearchItem,
         info,
         setInfo,
         serchParams,

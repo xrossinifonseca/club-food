@@ -1,10 +1,9 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { GiHamburger } from "react-icons/gi";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
 const SideMenu = ({ active }) => {
   const { data: session } = useSession();
@@ -12,7 +11,6 @@ const SideMenu = ({ active }) => {
   const closeMenu = () => {
     active(false);
   };
-  const router = useRouter();
 
   return (
     <aside
@@ -36,32 +34,33 @@ const SideMenu = ({ active }) => {
         </div>
 
         <ul className="space-y-2 mt-5">
-          <li
-            onClick={() => router.push("/")}
-            className="flex items-center justify-center  p-2 text-base font-semibold text-black rounded-lg bg-primary lg:cursor-pointer"
-          >
-            <span className="ml-3">Inicio</span>
-          </li>
-          <li className="flex items-center justify-center  p-2 text-base font-semibold text-white rounded-lg bg-details lg:cursor-pointer">
-            <span className="ml-3">Lanches e bebidas</span>
-          </li>
-          <li
-            onClick={() => router.push("/entrar")}
-            className="flex items-center justify-center  p-2 text-base font-semibold text-black rounded-lg bg-primary lg:cursor-pointer "
-          >
-            <span className="ml-3">Login</span>
-          </li>
-          <li
-            onClick={() => router.push("/registrar")}
-            className="flex items-center justify-center  p-2 text-base font-semibold text-black rounded-lg bg-primary lg:cursor-pointer"
-          >
-            <span className="ml-3">Criar conta</span>
-          </li>
+          <Link href="/">
+            <span className="flex items-center justify-center  p-2 text-base font-semibold text-black rounded-lg bg-primary lg:cursor-pointer">
+              Inicio
+            </span>
+          </Link>
+          <Link href="/menu">
+            <span className="flex items-center justify-center  p-2 text-base font-semibold text-white rounded-lg bg-details lg:cursor-pointer">
+              Lanches e bebidas
+            </span>
+          </Link>
+          <Link href="/entrar">
+            <span className="flex items-center justify-center  p-2 text-base font-semibold text-black rounded-lg bg-primary lg:cursor-pointer ">
+              Login
+            </span>
+          </Link>
+          <Link href="/registrar">
+            <span className="flex items-center justify-center  p-2 text-base font-semibold text-black rounded-lg bg-primary lg:cursor-pointer">
+              Criar conta
+            </span>
+          </Link>
         </ul>
 
-        <button type="button" onClick={() => signOut()}>
-          sair
-        </button>
+        {session && (
+          <button type="button" onClick={() => signOut()}>
+            sair
+          </button>
+        )}
       </div>
     </aside>
   );

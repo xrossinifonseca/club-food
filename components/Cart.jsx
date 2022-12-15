@@ -24,7 +24,6 @@ const Cart = ({ active }) => {
   const { data: session } = useSession();
 
   const checkPedido = () => {
-    active(false);
     if (!session) {
       router.push("/entrar");
     } else {

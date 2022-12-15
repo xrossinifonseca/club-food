@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { client } from "../lib/client";
 import {
   HeroBanner,
@@ -8,9 +8,9 @@ import {
   SnackCombos,
 } from "../components";
 
-const Index = ({ bannerData, produtos, burguers, combos }) => {
+const Index = ({ bannerData, pizzas, burgers, combos }) => {
   const [heroDiscount, heroBanner] = bannerData;
-  const products = [burguers, produtos];
+  const products = [burgers, pizzas];
 
   return (
     <>
@@ -23,21 +23,21 @@ const Index = ({ bannerData, produtos, burguers, combos }) => {
   );
 };
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
   const bannerQuery = '*[_type == "banner"]';
   const bannerData = await client.fetch(bannerQuery);
-  const queryProdtuos = '*[_type =="produtos"]';
-  const produtos = await client.fetch(queryProdtuos);
-  const burguersQuery = '*[_type =="burguers"]';
-  const burguers = await client.fetch(burguersQuery);
+  const queryPizzas = '*[_type =="pizzas"]';
+  const pizzas = await client.fetch(queryPizzas);
+  const burgersQuery = '*[_type =="burgers"]';
+  const burgers = await client.fetch(burgersQuery);
   const combosQuery = '*[_type =="combos"]';
   const combos = await client.fetch(combosQuery);
 
   return {
     props: {
       bannerData,
-      produtos,
-      burguers,
+      pizzas,
+      burgers,
       combos,
     },
   };
