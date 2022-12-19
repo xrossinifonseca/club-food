@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useStateContext } from "../../context/StateContext";
 import Product from "./Product";
-import { selectCategory } from "../../helpers/categorys";
+import { iconsFood } from "../../helpers/categorys";
 import { urlFor } from "../../lib/client";
 
 const MenuCategory = ({ items }) => {
@@ -13,7 +13,7 @@ const MenuCategory = ({ items }) => {
   return (
     <section className="w-full flex flex-col items-center">
       <article className="w-full  flex  sm:justify-center space-x-5 overflow-x-auto p-2">
-        {selectCategory.map((item) => (
+        {iconsFood.map((item) => (
           <div
             key={item.id}
             className={`min-w-[100px] min-h-[100px] text-details bg-white rounded-xl flex flex-col items-center justify-center  ${
@@ -35,8 +35,8 @@ const MenuCategory = ({ items }) => {
         />
       </div>
 
-      <article className="w-full sm:w-3/5  lg:w-auto mt-5 ">
-        <div className="w-full h-auto  lg:grid grid-cols-4 gap-x-4 lg:gap-x-10 mt-5 ">
+      <article className="w-full sm:w-3/5  lg:w-auto mt-5">
+        <div className="w-full h-auto  lg:grid grid-cols-3  gap-y-4 gap-x-10 mt-5 ">
           {products.map((product) => (
             <Product key={product._id} product={product} />
           ))}
