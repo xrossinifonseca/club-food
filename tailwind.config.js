@@ -10,6 +10,8 @@ module.exports = {
         primary: "#F1E9E6",
         details: "#DC2626",
         buttonin: "#4065b4",
+        "yellow-card": "#F2A205",
+        "acamp-card": "#FFA998",
       },
     },
   },

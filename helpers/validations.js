@@ -15,3 +15,13 @@ export const schema = yup.object().shape({
     .required("Necessário preencher campo nome")
     .trim(),
 });
+
+export const schemaLogin = yup.object().shape({
+  password: yup
+    .string("senha invalida")
+    .required("Necessário preencher campo senha"),
+  email: yup
+    .string()
+    .email("Insira um email valido")
+    .required("Necessário preencher campo email"),
+});

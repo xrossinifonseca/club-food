@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
+import { useRouter } from "next/router";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 const Context = createContext();
@@ -8,12 +9,12 @@ export const StateContext = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantitites, setTotalQuantitites] = useState(0);
-  // const [qty, setQty] = useState(1);
 
   // campo busca de produtos
   // const [searchItem, setSearchItem] = useState("");
   const [info, setInfo] = useState([]);
   const [serchParams] = useState(["name", "price", "image"]);
+  const [user, setUser] = useState(null);
 
   let foundProduct;
   let index;
@@ -59,7 +60,6 @@ export const StateContext = ({ children }) => {
     );
     setCartItems(newCartItems);
   };
-  // aumentar e diminuir produtos atualizando valor dentro do cart
 
   const toggleCartItemQuantity = (id, value) => {
     foundProduct = cartItems.find((item) => item._id === id);
@@ -82,17 +82,6 @@ export const StateContext = ({ children }) => {
       }
     }
   };
-
-  // aumentar e diminuir produtos
-  // const incQty = () => {
-  //   setQty((prevQty) => prevQty + 1);
-  // };
-  // const decQty = () => {
-  //   setQty((prevQty) => {
-  //     if (prevQty - 1 < 1) return 1;
-  //     return prevQty - 1;
-  //   });
-  // };
 
   const searchItem = (products, category) => {
     let items = [];

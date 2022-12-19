@@ -1,26 +1,24 @@
+import { useRouter } from "next/router";
 import React from "react";
-import { getSession } from "next-auth/react";
+import { useStateContext } from "../context/StateContext";
+import MenuSection from "../components/MenuSection";
 
 const CheckOut = () => {
-  return <div>CheckOut</div>;
-};
+  const { cartItems } = useStateContext();
+  const router = useRouter();
 
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: {
-      session,
-    },
-  };
+  return (
+    <>
+      <section className="w-full flex mt-10">
+        <article className="p-2 lg:w-1/2">
+          <h1 className="text-center text-gray-500 lg:text-3xl font-medium">
+            Finalize seu pedido
+          </h1>
+        </article>
+        <article></article>
+      </section>
+    </>
+  );
 };
 
 export default CheckOut;

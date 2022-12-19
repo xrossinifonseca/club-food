@@ -8,8 +8,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const NavBar = () => {
-  const { data: session } = useSession();
-
   const [openSideMenu, setOpenMenu] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const { totalQuantitites } = useStateContext();

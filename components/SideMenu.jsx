@@ -17,7 +17,7 @@ const SideMenu = ({ active }) => {
       className="fixed top-0 left-0 w-screen h-screen z-50"
       aria-label="Sidebar"
     >
-      <div className=" w-full sm:w-1/5 h-full  py-4 px-3 bg-white relative">
+      <div className=" w-full sm:w-2/5 lg:w-1/5 h-full  py-4 px-3 bg-white relative">
         <div className="relative flex justify-between items-center p-2">
           <GiHamburger className="text-2xl text-yellow-800" />
 

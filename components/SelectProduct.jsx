@@ -1,13 +1,12 @@
 import React from "react";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
-urlFor;
 
 const SelectProduct = ({ item, product }) => {
   const { addToCart } = useStateContext();
 
   return (
-    <div className="fixed top-0 flex   justify-center items-center w-screen h-screen z-50 ">
+    <div className="fixed top-0 left-0 flex justify-center items-center w-screen h-screen z-50 ">
       <div className="w-full sm:w-3/5  lg:w-1/2 h-4/5 bg-white rounded-xl flex flex-col items-center  relative p-4">
         <img
           src={urlFor(product.image && product.image[0])}
@@ -25,7 +24,7 @@ const SelectProduct = ({ item, product }) => {
         </button>
       </div>
       <div
-        className="absolute h-screen w-screen bg-black -z-30 opacity-70"
+        className="absolute h-screen  w-screen bg-black -z-30 opacity-70"
         onClick={() => item(false)}
       ></div>
     </div>

@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import LinkedInProvider from "next-auth/providers/linkedin";
+import Credentials from "next-auth/providers/credentials";
+import { api } from "../../../lib/api";
 export default NextAuth({
   providers: [
     LinkedInProvider({

@@ -24,11 +24,7 @@ const Cart = ({ active }) => {
   const { data: session } = useSession();
 
   const checkPedido = () => {
-    if (!session) {
-      router.push("/entrar");
-    } else {
-      router.push("/checkout");
-    }
+    if (cartItems.length > 0) router.push("/checkout");
   };
 
   return (

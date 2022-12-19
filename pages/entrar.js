@@ -1,9 +1,9 @@
-import { getSession } from "next-auth/react";
+import { getSession, getCsrfToken } from "next-auth/react";
 import React from "react";
 import Login from "../components/form/Login";
 import { client } from "../lib/client";
 
-const SignIn = ({ bannerData }) => {
+const SignIn = ({ bannerData, csrfToken }) => {
   return (
     <>
       <Login banner={bannerData[0]} />
@@ -29,6 +29,7 @@ export const getServerSideProps = async (context) => {
     props: {
       bannerData,
       session,
+      csrfToken: await getCsrfToken(context),
     },
   };
 };

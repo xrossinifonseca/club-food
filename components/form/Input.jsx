@@ -12,7 +12,7 @@ const Input = ({ label, type, placeholder, name, value, onChange, error }) => {
         onChange={onChange}
         className={`${
           error && "border-details"
-        } border p-2 h-10 focus:outline-none `}
+        } border p-2 h-10 focus:outline-none rounded `}
       />
     </div>
   );
